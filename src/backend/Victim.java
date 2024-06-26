@@ -2,6 +2,7 @@ package backend;
 
 public class Victim {
 
+    private int id;
     private String name;
     private String email;
     private String ip;
@@ -10,12 +11,29 @@ public class Victim {
 
     private String decryptKey;
 
+    public Victim(int id, String name, String email, String ip, String encryptKey, String decryptKey) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.ip = ip;
+        this.encryptKey = encryptKey;
+        this.decryptKey = decryptKey;
+    }
+
     public Victim(String name, String email, String ip, String encryptKey, String decryptKey) {
         this.name = name;
         this.email = email;
         this.ip = ip;
         this.encryptKey = encryptKey;
         this.decryptKey = decryptKey;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

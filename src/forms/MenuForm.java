@@ -6,6 +6,7 @@ import backend.Victim;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MenuForm extends JFrame{
     private JButton victimRegisterJButton;
@@ -70,6 +71,10 @@ public class MenuForm extends JFrame{
 
     public boolean saveVictim (Victim victim) {
         return dbConnection.saveVictim(victim);
+    }
+
+    public ArrayList<Victim> getVictims() {
+        return dbConnection.getVictims();
     }
 
 }
