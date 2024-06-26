@@ -1,5 +1,8 @@
 package forms;
 
+import backend.DbConnection;
+import backend.Victim;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +16,9 @@ public class MenuForm extends JFrame{
 
     private FileForm fileFormJFrame;
 
-    public MenuForm(){
+    private DbConnection dbConnection;
+
+    public MenuForm(DbConnection dbConnection){
         super("Ratona Zoe");
 
         setContentPane(panel);
@@ -22,6 +27,7 @@ public class MenuForm extends JFrame{
         pack();
         panel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
+        this.dbConnection = dbConnection;
         this.createVictimFormJFrame();
         this.createFileFormJFrame();
         victimRegisterJButton.addActionListener(new ActionListener() {
@@ -60,6 +66,10 @@ public class MenuForm extends JFrame{
     private void goToFileForm () {
         setVisible(false);
         fileFormJFrame.setVisible(true);
+    }
+
+    public boolean saveVictim (Victim victim) {
+        return dbConnection.saveVictim(victim);
     }
 
 }
