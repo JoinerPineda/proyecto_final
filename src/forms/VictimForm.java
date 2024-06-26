@@ -50,11 +50,17 @@ public class VictimForm extends JFrame {
     }
 
     public void registerVictim () {
-        String name = victimNameJText.getText();
-        String email = victimEmailJText.getText();
-        String ip = victimIpJText.getText();
-        String encryptKey = encryptedKeyJText.getText();
-        String decryptKey = decryptionKeyJText.getText();
+        String name = victimNameJText.getText().trim();
+        String email = victimEmailJText.getText().trim();
+        String ip = victimIpJText.getText().trim();
+        String encryptKey = encryptedKeyJText.getText().trim();
+        String decryptKey = decryptionKeyJText.getText().trim();
+
+        boolean isIncomplete = name.isEmpty() || email.isEmpty() || ip.isEmpty() || encryptKey.isEmpty() || decryptKey.isEmpty();
+        if (isIncomplete) {
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+            return;
+        }
 
         Victim victim = new Victim(name, email, ip, encryptKey, decryptKey);
 
@@ -75,6 +81,4 @@ public class VictimForm extends JFrame {
         encryptedKeyJText.setText("");
         decryptionKeyJText.setText("");
     }
-
 }
-
