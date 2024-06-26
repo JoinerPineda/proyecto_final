@@ -21,7 +21,7 @@ public class VictimForm extends JFrame {
 
     private DefaultListModel listModel;
     public VictimForm(MenuForm menuForm){
-        super("Ratona Zoe");
+        super("Victim Form");
 
         setContentPane(panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

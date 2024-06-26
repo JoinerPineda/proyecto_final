@@ -8,25 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="bac41" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Seleccione el archivo"/>
-        </properties>
-      </component>
-      <component id="3fca0" class="javax.swing.JButton" binding="decryptFileJButton">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Seleccione archivo"/>
-          <toolTipText value="Seleccione el archivo"/>
-          <verticalAlignment value="0"/>
-        </properties>
-      </component>
-      <component id="4892c" class="javax.swing.JButton" binding="cifrarButton" default-binding="true">
+      <component id="4892c" class="javax.swing.JButton" binding="encryptJButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -34,7 +16,7 @@
           <text value="Cifrar"/>
         </properties>
       </component>
-      <component id="ff7f9" class="javax.swing.JButton" binding="descifrarButton" default-binding="true">
+      <component id="ff7f9" class="javax.swing.JButton" binding="decryptJButton">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -56,6 +38,24 @@
         </constraints>
         <properties>
           <text value="Menu de archivos"/>
+        </properties>
+      </component>
+      <component id="3fca0" class="javax.swing.JButton" binding="selectFileJButton">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Seleccione archivo"/>
+          <toolTipText value="Seleccione el archivo"/>
+          <verticalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="1be09" class="javax.swing.JLabel" binding="fileNameJLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
         </properties>
       </component>
     </children>

